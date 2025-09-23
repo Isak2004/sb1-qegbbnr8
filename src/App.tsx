@@ -74,11 +74,11 @@ function App() {
                   {/* Games Button */}
                   <button 
                     onClick={() => setShowSnakeGame(true)}
-                    className="group relative w-full max-w-[160px] bg-gradient-to-r from-blue-600/80 to-purple-600/80 hover:from-blue-500/90 hover:to-purple-500/90 backdrop-blur-sm border border-white/20 rounded-lg px-6 py-3 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25"
+                    className="group relative w-full max-w-[80px] bg-gradient-to-r from-blue-600/80 to-purple-600/80 hover:from-blue-500/90 hover:to-purple-500/90 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25"
                   >
-                    <div className="flex items-center justify-center space-x-3">
-                      <Gamepad2 className="w-5 h-5 text-white group-hover:rotate-12 transition-transform duration-300" />
-                      <span className="text-white font-semibold text-base">Games</span>
+                    <div className="flex items-center justify-center space-x-1">
+                      <Gamepad2 className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300" />
+                      <span className="text-white font-semibold text-xs">Games</span>
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </button>
