@@ -1,10 +1,10 @@
 import React from 'react';
-import { X, Snowflake, Heart, Flashlight, Circle } from 'lucide-react';
+import { X, Snowflake, Heart, Flashlight, Circle, Shuffle } from 'lucide-react';
 
 interface EffectsModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSelectEffect: (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles') => void;
+  onSelectEffect: (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble') => void;
 }
 
 export const EffectsModal: React.FC<EffectsModalProps> = ({ isOpen, onClose, onSelectEffect }) => {
@@ -95,6 +95,22 @@ export const EffectsModal: React.FC<EffectsModalProps> = ({ isOpen, onClose, onS
               <div className="text-left">
                 <div className="text-white font-semibold text-lg">Soap Bubbles</div>
                 <div className="text-white/70 text-sm">3D floating soap bubbles</div>
+              </div>
+            </div>
+          </button>
+          
+          <button
+            onClick={() => {
+              onSelectEffect('scramble');
+              onClose();
+            }}
+            className="group w-full bg-gradient-to-r from-purple-600/80 to-indigo-600/80 hover:from-purple-500/90 hover:to-indigo-500/90 backdrop-blur-sm border border-white/20 rounded-xl p-6 transition-all duration-300 transform hover:scale-105"
+          >
+            <div className="flex items-center justify-center space-x-3">
+              <Shuffle className="w-8 h-8 text-white group-hover:rotate-12 transition-transform duration-300" />
+              <div className="text-left">
+                <div className="text-white font-semibold text-lg">Scramble</div>
+                <div className="text-white/70 text-sm">Image scramble/descramble</div>
               </div>
             </div>
           </button>
