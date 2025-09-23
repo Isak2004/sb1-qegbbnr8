@@ -1,10 +1,10 @@
 import React from 'react';
-import { X, Snowflake, Heart } from 'lucide-react';
+import { X, Snowflake, Heart, Flashlight } from 'lucide-react';
 
 interface EffectsModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSelectEffect: (effect: 'snowflakes' | 'balloons') => void;
+  onSelectEffect: (effect: 'snowflakes' | 'balloons' | 'spotlight') => void;
 }
 
 export const EffectsModal: React.FC<EffectsModalProps> = ({ isOpen, onClose, onSelectEffect }) => {
@@ -63,6 +63,22 @@ export const EffectsModal: React.FC<EffectsModalProps> = ({ isOpen, onClose, onS
               <div className="text-left">
                 <div className="text-white font-semibold text-lg">Balloons</div>
                 <div className="text-white/70 text-sm">Rising celebration balloons</div>
+              </div>
+            </div>
+          </button>
+          
+          <button
+            onClick={() => {
+              onSelectEffect('spotlight');
+              onClose();
+            }}
+            className="group w-full bg-gradient-to-r from-yellow-600/80 to-amber-600/80 hover:from-yellow-500/90 hover:to-amber-500/90 backdrop-blur-sm border border-white/20 rounded-xl p-6 transition-all duration-300 transform hover:scale-105"
+          >
+            <div className="flex items-center justify-center space-x-3">
+              <Flashlight className="w-8 h-8 text-white group-hover:rotate-12 transition-transform duration-300" />
+              <div className="text-left">
+                <div className="text-white font-semibold text-lg">Spotlight</div>
+                <div className="text-white/70 text-sm">Scanning spotlight effect</div>
               </div>
             </div>
           </button>

@@ -3,14 +3,15 @@ import { Gamepad2, Sparkles } from 'lucide-react';
 import { EffectsModal } from './components/EffectsModal';
 import { SnowflakesEffect } from './components/SnowflakesEffect';
 import { BalloonsEffect } from './components/BalloonsEffect';
+import { SpotlightEffect } from './components/SpotlightEffect';
 import { SnakeGame } from './components/SnakeGame';
 
 function App() {
   const [showEffectsModal, setShowEffectsModal] = useState(false);
   const [showSnakeGame, setShowSnakeGame] = useState(false);
-  const [activeEffect, setActiveEffect] = useState<'snowflakes' | 'balloons' | null>(null);
+  const [activeEffect, setActiveEffect] = useState<'snowflakes' | 'balloons' | 'spotlight' | null>(null);
 
-  const handleEffectSelect = (effect: 'snowflakes' | 'balloons') => {
+  const handleEffectSelect = (effect: 'snowflakes' | 'balloons' | 'spotlight') => {
     // Turn off current effect if selecting the same one
     if (activeEffect === effect) {
       setActiveEffect(null);
@@ -35,6 +36,7 @@ function App() {
       {/* Effects */}
       <SnowflakesEffect isActive={activeEffect === 'snowflakes'} />
       <BalloonsEffect isActive={activeEffect === 'balloons'} />
+      <SpotlightEffect isActive={activeEffect === 'spotlight'} />
       
       {/* Content Container */}
       <div className="relative z-10 min-h-screen flex flex-col">
