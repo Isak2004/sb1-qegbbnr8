@@ -26,7 +26,7 @@ function App() {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: 'url("https://images.pexels.com/photos/1939485/pexels-photo-1939485.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280&fit=crop")'
+          backgroundImage: 'url("/public/1758659008299-qbolrp.jpeg")'
         }}
       />
       
@@ -50,47 +50,47 @@ function App() {
         
         {/* Main Content Area */}
         <main className="flex-1 flex items-center justify-center p-6 sm:p-8">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto">
             <div className="space-y-12">
               {/* Welcome Section */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 sm:p-12 border border-white/20">
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-white/20 ml-auto max-w-md">
+                <h1 className="text-2xl sm:text-3xl font-bold text-white mb-3 text-center">
                   Welcome
                 </h1>
-                <p className="text-white/80 text-lg sm:text-xl mb-8">
+                <p className="text-white/80 text-base sm:text-lg mb-6 text-center">
                   Choose your experience
                 </p>
                 
                 {/* Buttons Container */}
-                <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <div className="flex flex-col gap-4 items-center">
                   {/* Games Button */}
                   <button 
                     onClick={() => setShowSnakeGame(true)}
-                    className="group relative w-full sm:w-auto min-w-[200px] bg-gradient-to-r from-blue-600/80 to-purple-600/80 hover:from-blue-500/90 hover:to-purple-500/90 backdrop-blur-sm border border-white/20 rounded-xl px-8 py-4 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25"
+                    className="group relative w-full max-w-[160px] bg-gradient-to-r from-blue-600/80 to-purple-600/80 hover:from-blue-500/90 hover:to-purple-500/90 backdrop-blur-sm border border-white/20 rounded-lg px-6 py-3 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25"
                   >
                     <div className="flex items-center justify-center space-x-3">
-                      <Gamepad2 className="w-6 h-6 text-white group-hover:rotate-12 transition-transform duration-300" />
-                      <span className="text-white font-semibold text-lg">Games</span>
+                      <Gamepad2 className="w-5 h-5 text-white group-hover:rotate-12 transition-transform duration-300" />
+                      <span className="text-white font-semibold text-base">Games</span>
                     </div>
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </button>
                   
                   {/* Effects Button */}
                   <button 
                     onClick={() => setShowEffectsModal(true)}
-                    className="group relative w-full sm:w-auto min-w-[200px] bg-gradient-to-r from-pink-600/80 to-orange-600/80 hover:from-pink-500/90 hover:to-orange-500/90 backdrop-blur-sm border border-white/20 rounded-xl px-8 py-4 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-pink-500/25"
+                    className="group relative w-full max-w-[160px] bg-gradient-to-r from-pink-600/80 to-orange-600/80 hover:from-pink-500/90 hover:to-orange-500/90 backdrop-blur-sm border border-white/20 rounded-lg px-6 py-3 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-pink-500/25"
                   >
                     <div className="flex items-center justify-center space-x-3">
-                      <Sparkles className="w-6 h-6 text-white group-hover:rotate-12 transition-transform duration-300" />
-                      <span className="text-white font-semibold text-lg">Effects</span>
+                      <Sparkles className="w-5 h-5 text-white group-hover:rotate-12 transition-transform duration-300" />
+                      <span className="text-white font-semibold text-base">Effects</span>
                     </div>
-                    <div className="absolute inset-0 bg-gradient-to-r from-pink-400/20 to-orange-400/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-pink-400/20 to-orange-400/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </button>
                 </div>
                 
                 {/* Active Effect Indicator */}
                 {activeEffect && (
-                  <div className="mt-6 flex items-center justify-center space-x-2">
+                  <div className="mt-4 flex items-center justify-center space-x-2">
                     <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                     <span className="text-white/70 text-sm capitalize">
                       {activeEffect} effect active
