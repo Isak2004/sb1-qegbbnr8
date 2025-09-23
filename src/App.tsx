@@ -86,11 +86,11 @@ function App() {
                   {/* Effects Button */}
                   <button 
                     onClick={() => setShowEffectsModal(true)}
-                    className="group relative w-full max-w-[160px] bg-gradient-to-r from-pink-600/80 to-orange-600/80 hover:from-pink-500/90 hover:to-orange-500/90 backdrop-blur-sm border border-white/20 rounded-lg px-6 py-3 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-pink-500/25"
+                    className="group relative w-full max-w-[80px] bg-gradient-to-r from-pink-600/80 to-orange-600/80 hover:from-pink-500/90 hover:to-orange-500/90 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-pink-500/25"
                   >
-                    <div className="flex items-center justify-center space-x-3">
-                      <Sparkles className="w-5 h-5 text-white group-hover:rotate-12 transition-transform duration-300" />
-                      <span className="text-white font-semibold text-base">Effects</span>
+                    <div className="flex items-center justify-center space-x-1">
+                      <Sparkles className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300" />
+                      <span className="text-white font-semibold text-xs">Effects</span>
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-r from-pink-400/20 to-orange-400/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </button>
