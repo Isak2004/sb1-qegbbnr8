@@ -39,52 +39,73 @@ export const SpotlightEffect: React.FC<SpotlightEffectProps> = ({ isActive }) =>
       // Update time for smooth movement
       timeRef.current += 0.01;
 
-      // Calculate spotlight position using smooth circular motion
-      const centerX = canvas.width / 2;
-      const centerY = canvas.height / 2;
-      const radiusX = canvas.width * 0.3;
-      const radiusY = canvas.height * 0.25;
-      
-      const spotlightX = centerX + Math.cos(timeRef.current) * radiusX;
-      const spotlightY = centerY + Math.sin(timeRef.current * 0.7) * radiusY;
-
-      // Create radial gradient for spotlight effect
-      const spotlightRadius = Math.min(canvas.width, canvas.height) * 0.4;
-      const gradient = ctx.createRadialGradient(
-        spotlightX, spotlightY, 0,
-        spotlightX, spotlightY, spotlightRadius
-      );
-
-      // Gradient stops for spotlight effect
-      gradient.addColorStop(0, 'rgba(0, 0, 0, 0)'); // Transparent center (bright)
-      gradient.addColorStop(0.3, 'rgba(0, 0, 0, 0.05)'); // Slight darkening
-      gradient.addColorStop(0.6, 'rgba(0, 0, 0, 0.2)'); // More darkening
-      gradient.addColorStop(0.8, 'rgba(0, 0, 0, 0.4)'); // Heavy darkening
-      gradient.addColorStop(1, 'rgba(0, 0, 0, 0.5)'); // Dark but visible edges
-
-      // Fill the entire canvas with the gradient
-      ctx.fillStyle = gradient;
+      // Start with a dark overlay
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Add a subtle inner glow effect at the spotlight center
-      const innerGlow = ctx.createRadialGradient(
-        spotlightX, spotlightY, 0,
-        spotlightX, spotlightY, spotlightRadius * 0.2
-      );
-      innerGlow.addColorStop(0, 'rgba(255, 255, 255, 0.1)');
-      innerGlow.addColorStop(1, 'rgba(255, 255, 255, 0)');
+      // Create 5 spotlights with different movement patterns
+      const spotlights = [
+        {
+          x: canvas.width * 0.5 + Math.cos(timeRef.current) * canvas.width * 0.3,
+          y: canvas.height * 0.5 + Math.sin(timeRef.current * 0.7) * canvas.height * 0.25,
+          phase: 0
+        },
+        {
+          x: canvas.width * 0.3 + Math.cos(timeRef.current * 1.3 + Math.PI) * canvas.width * 0.2,
+          y: canvas.height * 0.3 + Math.sin(timeRef.current * 0.9 + Math.PI) * canvas.height * 0.2,
+          phase: Math.PI / 2
+        },
+        {
+          x: canvas.width * 0.7 + Math.cos(timeRef.current * 0.8 + Math.PI * 0.5) * canvas.width * 0.25,
+          y: canvas.height * 0.7 + Math.sin(timeRef.current * 1.1 + Math.PI * 0.5) * canvas.height * 0.15,
+          phase: Math.PI
+        },
+        {
+          x: canvas.width * 0.2 + Math.cos(timeRef.current * 1.5 + Math.PI * 1.5) * canvas.width * 0.15,
+          y: canvas.height * 0.8 + Math.sin(timeRef.current * 0.6 + Math.PI * 1.5) * canvas.height * 0.1,
+          phase: Math.PI * 1.5
+        },
+        {
+          x: canvas.width * 0.8 + Math.cos(timeRef.current * 0.9 + Math.PI * 0.25) * canvas.width * 0.2,
+          y: canvas.height * 0.2 + Math.sin(timeRef.current * 1.2 + Math.PI * 0.25) * canvas.height * 0.2,
+          phase: Math.PI * 0.25
+        }
+      ];
 
-      ctx.fillStyle = innerGlow;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // Set blend mode to lighten for spotlight effect
+      ctx.globalCompositeOperation = 'lighten';
 
-      // Add some subtle flickering to make it more realistic
-      const flicker = 0.95 + Math.sin(timeRef.current * 15) * 0.05;
-      ctx.globalAlpha = flicker;
+      // Draw each spotlight
+      spotlights.forEach((spotlight, index) => {
+        // Much smaller spotlight radius (about 1/3 of original)
+        const spotlightRadius = Math.min(canvas.width, canvas.height) * 0.13;
+        
+        // Add flickering effect with different timing for each spotlight
+        const flicker = 0.95 + Math.sin(timeRef.current * 15 + spotlight.phase) * 0.05;
+        ctx.globalAlpha = flicker;
+        
+        // Create radial gradient for spotlight effect
+        const gradient = ctx.createRadialGradient(
+          spotlight.x, spotlight.y, 0,
+          spotlight.x, spotlight.y, spotlightRadius
+        );
 
-      // Redraw the main spotlight with flicker
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+        // Much tighter gradient for narrower bright center
+        gradient.addColorStop(0, 'rgba(255, 255, 255, 0.8)'); // Bright center
+        gradient.addColorStop(0.1, 'rgba(255, 255, 255, 0.6)'); // Still bright
+        gradient.addColorStop(0.3, 'rgba(255, 255, 255, 0.3)'); // Dimming
+        gradient.addColorStop(0.6, 'rgba(255, 255, 255, 0.1)'); // Fading
+        gradient.addColorStop(1, 'rgba(255, 255, 255, 0)'); // Transparent edge
 
+        // Draw the spotlight
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(spotlight.x, spotlight.y, spotlightRadius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // Reset composite operation and alpha
+      ctx.globalCompositeOperation = 'source-over';
       ctx.globalAlpha = 1;
 
       animationRef.current = requestAnimationFrame(animate);
