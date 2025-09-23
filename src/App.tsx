@@ -11,7 +11,6 @@ import { SnakeGame } from './components/SnakeGame';
 function App() {
   const [showEffectsModal, setShowEffectsModal] = useState(false);
   const [showSnakeGame, setShowSnakeGame] = useState(false);
-  const [activeEffect, setActiveEffect] = useState<'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | null>(null);
   const [activeEffect, setActiveEffect] = useState<'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | null>(null);
 
   const handleEffectSelect = (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble') => {
