@@ -40,14 +40,11 @@ export const EffectsModal: React.FC<EffectsModalProps> = ({ isOpen, onClose, onS
               onSelectEffect('snowflakes');
               onClose();
             }}
-            className="group w-full bg-gradient-to-r from-blue-600/80 to-cyan-600/80 hover:from-blue-500/90 hover:to-cyan-500/90 backdrop-blur-sm border border-white/20 rounded-xl p-6 transition-all duration-300 transform hover:scale-105"
+            className="group w-full max-w-[80px] mx-auto bg-gradient-to-r from-blue-600/80 to-cyan-600/80 hover:from-blue-500/90 hover:to-cyan-500/90 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 transition-all duration-300 transform hover:scale-105"
           >
-            <div className="flex items-center justify-center space-x-3">
-              <Snowflake className="w-8 h-8 text-white group-hover:rotate-12 transition-transform duration-300" />
-              <div className="text-left">
-                <div className="text-white font-semibold text-lg">Snowflakes</div>
-                <div className="text-white/70 text-sm">Gentle falling snow</div>
-              </div>
+            <div className="flex items-center justify-center space-x-1">
+              <Snowflake className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300" />
+              <span className="text-white font-semibold text-xs">Snow</span>
             </div>
           </button>
           
@@ -56,14 +53,11 @@ export const EffectsModal: React.FC<EffectsModalProps> = ({ isOpen, onClose, onS
               onSelectEffect('balloons');
               onClose();
             }}
-            className="group w-full bg-gradient-to-r from-pink-600/80 to-red-600/80 hover:from-pink-500/90 hover:to-red-500/90 backdrop-blur-sm border border-white/20 rounded-xl p-6 transition-all duration-300 transform hover:scale-105"
+            className="group w-full max-w-[80px] mx-auto bg-gradient-to-r from-pink-600/80 to-red-600/80 hover:from-pink-500/90 hover:to-red-500/90 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 transition-all duration-300 transform hover:scale-105"
           >
-            <div className="flex items-center justify-center space-x-3">
-              <Heart className="w-8 h-8 text-white group-hover:rotate-12 transition-transform duration-300" />
-              <div className="text-left">
-                <div className="text-white font-semibold text-lg">Balloons</div>
-                <div className="text-white/70 text-sm">Rising celebration balloons</div>
-              </div>
+            <div className="flex items-center justify-center space-x-1">
+              <Heart className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300" />
+              <span className="text-white font-semibold text-xs">Balloons</span>
             </div>
           </button>
           
@@ -72,14 +66,11 @@ export const EffectsModal: React.FC<EffectsModalProps> = ({ isOpen, onClose, onS
               onSelectEffect('spotlight');
               onClose();
             }}
-            className="group w-full bg-gradient-to-r from-yellow-600/80 to-amber-600/80 hover:from-yellow-500/90 hover:to-amber-500/90 backdrop-blur-sm border border-white/20 rounded-xl p-6 transition-all duration-300 transform hover:scale-105"
+            className="group w-full max-w-[80px] mx-auto bg-gradient-to-r from-yellow-600/80 to-amber-600/80 hover:from-yellow-500/90 hover:to-amber-500/90 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 transition-all duration-300 transform hover:scale-105"
           >
-            <div className="flex items-center justify-center space-x-3">
-              <Flashlight className="w-8 h-8 text-white group-hover:rotate-12 transition-transform duration-300" />
-              <div className="text-left">
-                <div className="text-white font-semibold text-lg">Spotlight</div>
-                <div className="text-white/70 text-sm">Scanning spotlight effect</div>
-              </div>
+            <div className="flex items-center justify-center space-x-1">
+              <Flashlight className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300" />
+              <span className="text-white font-semibold text-xs">Spotlight</span>
             </div>
           </button>
           
@@ -88,14 +79,11 @@ export const EffectsModal: React.FC<EffectsModalProps> = ({ isOpen, onClose, onS
               onSelectEffect('bubbles');
               onClose();
             }}
-            className="group w-full bg-gradient-to-r from-cyan-600/80 to-blue-600/80 hover:from-cyan-500/90 hover:to-blue-500/90 backdrop-blur-sm border border-white/20 rounded-xl p-6 transition-all duration-300 transform hover:scale-105"
+            className="group w-full max-w-[80px] mx-auto bg-gradient-to-r from-cyan-600/80 to-blue-600/80 hover:from-cyan-500/90 hover:to-blue-500/90 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 transition-all duration-300 transform hover:scale-105"
           >
-            <div className="flex items-center justify-center space-x-3">
-              <Circle className="w-8 h-8 text-white group-hover:rotate-12 transition-transform duration-300" />
-              <div className="text-left">
-                <div className="text-white font-semibold text-lg">Soap Bubbles</div>
-                <div className="text-white/70 text-sm">3D floating soap bubbles</div>
-              </div>
+            <div className="flex items-center justify-center space-x-1">
+              <Circle className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300" />
+              <span className="text-white font-semibold text-xs">Bubbles</span>
             </div>
           </button>
           
@@ -104,14 +92,11 @@ export const EffectsModal: React.FC<EffectsModalProps> = ({ isOpen, onClose, onS
               onSelectEffect('scramble');
               onClose();
             }}
-            className="group w-full bg-gradient-to-r from-purple-600/80 to-indigo-600/80 hover:from-purple-500/90 hover:to-indigo-500/90 backdrop-blur-sm border border-white/20 rounded-xl p-6 transition-all duration-300 transform hover:scale-105"
+            className="group w-full max-w-[80px] mx-auto bg-gradient-to-r from-purple-600/80 to-indigo-600/80 hover:from-purple-500/90 hover:to-indigo-500/90 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 transition-all duration-300 transform hover:scale-105"
           >
-            <div className="flex items-center justify-center space-x-3">
-              <Shuffle className="w-8 h-8 text-white group-hover:rotate-12 transition-transform duration-300" />
-              <div className="text-left">
-                <div className="text-white font-semibold text-lg">Scramble</div>
-                <div className="text-white/70 text-sm">Image scramble/descramble</div>
-              </div>
+            <div className="flex items-center justify-center space-x-1">
+              <Shuffle className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300" />
+              <span className="text-white font-semibold text-xs">Scramble</span>
             </div>
           </button>
           
@@ -120,14 +105,11 @@ export const EffectsModal: React.FC<EffectsModalProps> = ({ isOpen, onClose, onS
               onSelectEffect('sunflare');
               onClose();
             }}
-            className="group w-full bg-gradient-to-r from-orange-600/80 to-yellow-600/80 hover:from-orange-500/90 hover:to-yellow-500/90 backdrop-blur-sm border border-white/20 rounded-xl p-6 transition-all duration-300 transform hover:scale-105"
+            className="group w-full max-w-[80px] mx-auto bg-gradient-to-r from-orange-600/80 to-yellow-600/80 hover:from-orange-500/90 hover:to-yellow-500/90 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 transition-all duration-300 transform hover:scale-105"
           >
-            <div className="flex items-center justify-center space-x-3">
-              <Sun className="w-8 h-8 text-white group-hover:rotate-12 transition-transform duration-300" />
-              <div className="text-left">
-                <div className="text-white font-semibold text-lg">Sunflare</div>
-                <div className="text-white/70 text-sm">Moving sun with lens flares</div>
-              </div>
+            <div className="flex items-center justify-center space-x-1">
+              <Sun className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300" />
+              <span className="text-white font-semibold text-xs">Sunflare</span>
             </div>
           </button>
           
@@ -136,14 +118,11 @@ export const EffectsModal: React.FC<EffectsModalProps> = ({ isOpen, onClose, onS
               onSelectEffect('lensflare');
               onClose();
             }}
-            className="group w-full bg-gradient-to-r from-indigo-600/80 to-purple-600/80 hover:from-indigo-500/90 hover:to-purple-500/90 backdrop-blur-sm border border-white/20 rounded-xl p-6 transition-all duration-300 transform hover:scale-105"
+            className="group w-full max-w-[80px] mx-auto bg-gradient-to-r from-indigo-600/80 to-purple-600/80 hover:from-indigo-500/90 hover:to-purple-500/90 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 transition-all duration-300 transform hover:scale-105"
           >
-            <div className="flex items-center justify-center space-x-3">
-              <Camera className="w-8 h-8 text-white group-hover:rotate-12 transition-transform duration-300" />
-              <div className="text-left">
-                <div className="text-white font-semibold text-lg">Lens Flare</div>
-                <div className="text-white/70 text-sm">Interactive camera lens flares</div>
-              </div>
+            <div className="flex items-center justify-center space-x-1">
+              <Camera className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300" />
+              <span className="text-white font-semibold text-xs">Lens Flare</span>
             </div>
           </button>
         </div>
