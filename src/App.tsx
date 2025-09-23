@@ -6,14 +6,15 @@ import { BalloonsEffect } from './components/BalloonsEffect';
 import { SpotlightEffect } from './components/SpotlightEffect';
 import { SoapBubblesEffect } from './components/SoapBubblesEffect';
 import { ScrambleEffect } from './components/ScrambleEffect';
+import { SunflareEffect } from './components/SunflareEffect';
 import { SnakeGame } from './components/SnakeGame';
 
 function App() {
   const [showEffectsModal, setShowEffectsModal] = useState(false);
   const [showSnakeGame, setShowSnakeGame] = useState(false);
-  const [activeEffect, setActiveEffect] = useState<'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | null>(null);
+  const [activeEffect, setActiveEffect] = useState<'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | null>(null);
 
-  const handleEffectSelect = (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble') => {
+  const handleEffectSelect = (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare') => {
     // Turn off current effect if selecting the same one
     if (activeEffect === effect) {
       setActiveEffect(null);
@@ -41,6 +42,7 @@ function App() {
       <SpotlightEffect isActive={activeEffect === 'spotlight'} />
       <SoapBubblesEffect isActive={activeEffect === 'bubbles'} />
       <ScrambleEffect isActive={activeEffect === 'scramble'} />
+      <SunflareEffect isActive={activeEffect === 'sunflare'} />
       
       {/* Content Container */}
       <div className="relative z-10 min-h-screen flex flex-col">

@@ -1,10 +1,10 @@
 import React from 'react';
-import { X, Snowflake, Heart, Flashlight, Circle, Shuffle } from 'lucide-react';
+import { X, Snowflake, Heart, Flashlight, Circle, Shuffle, Sun } from 'lucide-react';
 
 interface EffectsModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSelectEffect: (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble') => void;
+  onSelectEffect: (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare') => void;
 }
 
 export const EffectsModal: React.FC<EffectsModalProps> = ({ isOpen, onClose, onSelectEffect }) => {
@@ -111,6 +111,22 @@ export const EffectsModal: React.FC<EffectsModalProps> = ({ isOpen, onClose, onS
               <div className="text-left">
                 <div className="text-white font-semibold text-lg">Scramble</div>
                 <div className="text-white/70 text-sm">Image scramble/descramble</div>
+              </div>
+            </div>
+          </button>
+          
+          <button
+            onClick={() => {
+              onSelectEffect('sunflare');
+              onClose();
+            }}
+            className="group w-full bg-gradient-to-r from-orange-600/80 to-yellow-600/80 hover:from-orange-500/90 hover:to-yellow-500/90 backdrop-blur-sm border border-white/20 rounded-xl p-6 transition-all duration-300 transform hover:scale-105"
+          >
+            <div className="flex items-center justify-center space-x-3">
+              <Sun className="w-8 h-8 text-white group-hover:rotate-12 transition-transform duration-300" />
+              <div className="text-left">
+                <div className="text-white font-semibold text-lg">Sunflare</div>
+                <div className="text-white/70 text-sm">Moving sun with lens flares</div>
               </div>
             </div>
           </button>
