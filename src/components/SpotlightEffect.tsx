@@ -57,10 +57,10 @@ export const SpotlightEffect: React.FC<SpotlightEffectProps> = ({ isActive }) =>
 
       // Gradient stops for spotlight effect
       gradient.addColorStop(0, 'rgba(0, 0, 0, 0)'); // Transparent center (bright)
-      gradient.addColorStop(0.3, 'rgba(0, 0, 0, 0.1)'); // Slight darkening
-      gradient.addColorStop(0.6, 'rgba(0, 0, 0, 0.4)'); // More darkening
-      gradient.addColorStop(0.8, 'rgba(0, 0, 0, 0.7)'); // Heavy darkening
-      gradient.addColorStop(1, 'rgba(0, 0, 0, 0.85)'); // Very dark edges
+      gradient.addColorStop(0.3, 'rgba(0, 0, 0, 0.05)'); // Slight darkening
+      gradient.addColorStop(0.6, 'rgba(0, 0, 0, 0.2)'); // More darkening
+      gradient.addColorStop(0.8, 'rgba(0, 0, 0, 0.4)'); // Heavy darkening
+      gradient.addColorStop(1, 'rgba(0, 0, 0, 0.5)'); // Dark but visible edges
 
       // Fill the entire canvas with the gradient
       ctx.fillStyle = gradient;
