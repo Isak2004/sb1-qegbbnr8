@@ -1,10 +1,10 @@
 import React from 'react';
-import { X, Snowflake, Heart, Flashlight, Circle, Shuffle, Sun, Camera, Sparkles, CloudRain, Zap, Wind, Bolt } from 'lucide-react';
+import { X, Snowflake, Heart, Flashlight, Circle, Shuffle, Sun, Camera, Sparkles, CloudRain, Zap, Wind, Bolt, Star, Waves } from 'lucide-react';
 
 interface EffectsModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSelectEffect: (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch' | 'smoke' | 'lightning') => void;
+  onSelectEffect: (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch' | 'smoke' | 'lightning' | 'starfield' | 'dust') => void;
 }
 
 export const EffectsModal: React.FC<EffectsModalProps> = ({ isOpen, onClose, onSelectEffect }) => {
@@ -188,6 +188,32 @@ export const EffectsModal: React.FC<EffectsModalProps> = ({ isOpen, onClose, onS
             <div className="flex items-center justify-center space-x-1">
               <Bolt className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300" />
               <span className="text-white font-semibold text-xs">Lightning</span>
+            </div>
+          </button>
+          
+          <button
+            onClick={() => {
+              onSelectEffect('starfield');
+              onClose();
+            }}
+            className="group w-full max-w-[80px] mx-auto bg-gradient-to-r from-indigo-600/80 to-blue-600/80 hover:from-indigo-500/90 hover:to-blue-500/90 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 transition-all duration-300 transform hover:scale-105"
+          >
+            <div className="flex items-center justify-center space-x-1">
+              <Star className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300" />
+              <span className="text-white font-semibold text-xs">Starfield</span>
+            </div>
+          </button>
+          
+          <button
+            onClick={() => {
+              onSelectEffect('dust');
+              onClose();
+            }}
+            className="group w-full max-w-[80px] mx-auto bg-gradient-to-r from-amber-600/80 to-orange-600/80 hover:from-amber-500/90 hover:to-orange-500/90 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 transition-all duration-300 transform hover:scale-105"
+          >
+            <div className="flex items-center justify-center space-x-1">
+              <Waves className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300" />
+              <span className="text-white font-semibold text-xs">Dust</span>
             </div>
           </button>
         </div>

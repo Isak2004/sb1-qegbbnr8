@@ -13,14 +13,16 @@ import { RainEffect } from './components/RainEffect';
 import { GlitchEffect } from './components/GlitchEffect';
 import { SmokeWispsEffect } from './components/SmokeWispsEffect';
 import { LightningStormEffect } from './components/LightningStormEffect';
+import { StarfieldEffect } from './components/StarfieldEffect';
+import { DustParticlesEffect } from './components/DustParticlesEffect';
 import { SnakeGame } from './components/SnakeGame';
 
 function App() {
   const [showEffectsModal, setShowEffectsModal] = useState(false);
   const [showSnakeGame, setShowSnakeGame] = useState(false);
-  const [activeEffect, setActiveEffect] = useState<'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch' | 'smoke' | 'lightning' | null>(null);
+  const [activeEffect, setActiveEffect] = useState<'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch' | 'smoke' | 'lightning' | 'starfield' | 'dust' | null>(null);
 
-  const handleEffectSelect = (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch' | 'smoke' | 'lightning') => {
+  const handleEffectSelect = (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch' | 'smoke' | 'lightning' | 'starfield' | 'dust') => {
     // Turn off current effect if selecting the same one
     if (activeEffect === effect) {
       setActiveEffect(null);
@@ -55,6 +57,8 @@ function App() {
       <GlitchEffect isActive={activeEffect === 'glitch'} />
       <SmokeWispsEffect isActive={activeEffect === 'smoke'} />
       <LightningStormEffect isActive={activeEffect === 'lightning'} />
+      <StarfieldEffect isActive={activeEffect === 'starfield'} />
+      <DustParticlesEffect isActive={activeEffect === 'dust'} />
       
       {/* Content Container */}
       <div className="relative z-10 min-h-screen flex flex-col">
