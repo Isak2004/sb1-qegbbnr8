@@ -1,10 +1,10 @@
 import React from 'react';
-import { X, Snowflake, Heart, Flashlight, Circle, Shuffle, Sun, Camera } from 'lucide-react';
+import { X, Snowflake, Heart, Flashlight, Circle, Shuffle, Sun, Camera, Sparkles, CloudRain, Zap } from 'lucide-react';
 
 interface EffectsModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSelectEffect: (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare') => void;
+  onSelectEffect: (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch') => void;
 }
 
 export const EffectsModal: React.FC<EffectsModalProps> = ({ isOpen, onClose, onSelectEffect }) => {
@@ -123,6 +123,45 @@ export const EffectsModal: React.FC<EffectsModalProps> = ({ isOpen, onClose, onS
             <div className="flex items-center justify-center space-x-1">
               <Camera className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300" />
               <span className="text-white font-semibold text-xs">Lens Flare</span>
+            </div>
+          </button>
+          
+          <button
+            onClick={() => {
+              onSelectEffect('fireflies');
+              onClose();
+            }}
+            className="group w-full max-w-[80px] mx-auto bg-gradient-to-r from-green-600/80 to-yellow-600/80 hover:from-green-500/90 hover:to-yellow-500/90 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 transition-all duration-300 transform hover:scale-105"
+          >
+            <div className="flex items-center justify-center space-x-1">
+              <Sparkles className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300" />
+              <span className="text-white font-semibold text-xs">Fireflies</span>
+            </div>
+          </button>
+          
+          <button
+            onClick={() => {
+              onSelectEffect('rain');
+              onClose();
+            }}
+            className="group w-full max-w-[80px] mx-auto bg-gradient-to-r from-blue-600/80 to-gray-600/80 hover:from-blue-500/90 hover:to-gray-500/90 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 transition-all duration-300 transform hover:scale-105"
+          >
+            <div className="flex items-center justify-center space-x-1">
+              <CloudRain className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300" />
+              <span className="text-white font-semibold text-xs">Rain</span>
+            </div>
+          </button>
+          
+          <button
+            onClick={() => {
+              onSelectEffect('glitch');
+              onClose();
+            }}
+            className="group w-full max-w-[80px] mx-auto bg-gradient-to-r from-red-600/80 to-purple-600/80 hover:from-red-500/90 hover:to-purple-500/90 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 transition-all duration-300 transform hover:scale-105"
+          >
+            <div className="flex items-center justify-center space-x-1">
+              <Zap className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300" />
+              <span className="text-white font-semibold text-xs">Glitch</span>
             </div>
           </button>
         </div>

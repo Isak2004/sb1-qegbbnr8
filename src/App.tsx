@@ -8,14 +8,17 @@ import { SoapBubblesEffect } from './components/SoapBubblesEffect';
 import { ScrambleEffect } from './components/ScrambleEffect';
 import { SunflareEffect } from './components/SunflareEffect';
 import { LensFlareEffect } from './components/LensFlareEffect';
+import { FirefliesEffect } from './components/FirefliesEffect';
+import { RainEffect } from './components/RainEffect';
+import { GlitchEffect } from './components/GlitchEffect';
 import { SnakeGame } from './components/SnakeGame';
 
 function App() {
   const [showEffectsModal, setShowEffectsModal] = useState(false);
   const [showSnakeGame, setShowSnakeGame] = useState(false);
-  const [activeEffect, setActiveEffect] = useState<'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | null>(null);
+  const [activeEffect, setActiveEffect] = useState<'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch' | null>(null);
 
-  const handleEffectSelect = (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare') => {
+  const handleEffectSelect = (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch') => {
     // Turn off current effect if selecting the same one
     if (activeEffect === effect) {
       setActiveEffect(null);
@@ -45,6 +48,9 @@ function App() {
       <ScrambleEffect isActive={activeEffect === 'scramble'} />
       <SunflareEffect isActive={activeEffect === 'sunflare'} />
      <LensFlareEffect isActive={activeEffect === 'lensflare'} />
+      <FirefliesEffect isActive={activeEffect === 'fireflies'} />
+      <RainEffect isActive={activeEffect === 'rain'} />
+      <GlitchEffect isActive={activeEffect === 'glitch'} />
       
       {/* Content Container */}
       <div className="relative z-10 min-h-screen flex flex-col">
