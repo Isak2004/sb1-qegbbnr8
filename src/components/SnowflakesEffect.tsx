@@ -96,9 +96,9 @@ export const SnowflakesEffect: React.FC<SnowflakesEffectProps> = ({ isActive }) 
         
         if (snowflake.y > groundLevel - snowflake.size) {
           // Add to snow pile
-          if (pile && Math.random() < 0.3) { // 30% chance to stick and build up
-            pile.height += snowflake.size * 0.1; // Gradual accumulation
-            pile.height = Math.min(pile.height, canvas.height * 0.3); // Max height limit
+          if (pile && Math.random() < 0.8) { // 80% chance to stick and build up
+            pile.height += snowflake.size * 0.5; // Much faster accumulation
+            pile.height = Math.min(pile.height, canvas.height * 0.7); // Much higher max height
           }
           
           // Reset snowflake
