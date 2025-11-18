@@ -55,14 +55,14 @@ export const SnowflakesEffect: React.FC<SnowflakesEffectProps> = ({ isActive }) 
       snowPilesRef.current = [];
       
       // Initialize snow piles across the bottom
-      const pileWidth = 20;
+      const pileWidth = 40;
       const pileCount = Math.ceil(canvas.width / pileWidth);
       for (let i = 0; i < pileCount; i++) {
         snowPilesRef.current.push({
           x: i * pileWidth,
           height: 0,
           width: pileWidth,
-          opacity: 0.8,
+          opacity: 0.95,
         });
       }
       
@@ -90,14 +90,14 @@ export const SnowflakesEffect: React.FC<SnowflakesEffectProps> = ({ isActive }) 
         snowflake.x += snowflake.drift;
 
         // Check if snowflake hits the ground or accumulated snow
-        const pileIndex = Math.floor(snowflake.x / 20);
+        const pileIndex = Math.floor(snowflake.x / 40);
         const pile = snowPilesRef.current[pileIndex];
         const groundLevel = pile ? canvas.height - pile.height : canvas.height;
         
         if (snowflake.y > groundLevel - snowflake.size) {
           // Add to snow pile
-          if (pile && Math.random() < 0.8) { // 80% chance to stick and build up
-            pile.height += snowflake.size * 0.5; // Much faster accumulation
+          if (pile && Math.random() < 0.95) { // 95% chance to stick and build up
+            pile.height += snowflake.size * 0.8; // Even faster accumulation
             pile.height = Math.min(pile.height, canvas.height * 0.7); // Much higher max height
           }
           
@@ -136,9 +136,9 @@ export const SnowflakesEffect: React.FC<SnowflakesEffectProps> = ({ isActive }) 
             pile.x, canvas.height - pile.height,
             pile.x, canvas.height
           );
-          pileGradient.addColorStop(0, 'rgba(255, 255, 255, 0.9)');
-          pileGradient.addColorStop(0.5, 'rgba(240, 240, 255, 0.8)');
-          pileGradient.addColorStop(1, 'rgba(220, 220, 240, 0.7)');
+          pileGradient.addColorStop(0, 'rgba(255, 255, 255, 0.98)');
+          pileGradient.addColorStop(0.5, 'rgba(240, 240, 255, 0.95)');
+          pileGradient.addColorStop(1, 'rgba(220, 220, 240, 0.9)');
           
           ctx.fillStyle = pileGradient;
           
@@ -156,7 +156,7 @@ export const SnowflakesEffect: React.FC<SnowflakesEffectProps> = ({ isActive }) 
           
           // Add subtle shadow
           ctx.globalAlpha = pile.opacity * 0.3;
-          ctx.fillStyle = 'rgba(200, 200, 220, 0.5)';
+          ctx.fillStyle = 'rgba(200, 200, 220, 0.8)';
           ctx.fillRect(pile.x, canvas.height - 2, pile.width, 2);
           
           // Add sparkle effect on snow piles
