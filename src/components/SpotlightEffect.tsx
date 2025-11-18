@@ -39,8 +39,8 @@ export const SpotlightEffect: React.FC<SpotlightEffectProps> = ({ isActive }) =>
       // Update time for smooth movement
       timeRef.current += 0.01;
 
-      // Start with a dark overlay
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+      // Start with a lighter dark overlay
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Create 5 spotlights with different movement patterns
@@ -82,7 +82,7 @@ export const SpotlightEffect: React.FC<SpotlightEffectProps> = ({ isActive }) =>
         
         // Add flickering effect with different timing for each spotlight
         const flicker = 0.95 + Math.sin(timeRef.current * 15 + spotlight.phase) * 0.05;
-        ctx.globalAlpha = flicker;
+        ctx.globalAlpha = flicker * 1.2; // Increased brightness
         
         // Create radial gradient for spotlight effect
         const gradient = ctx.createRadialGradient(
@@ -91,10 +91,10 @@ export const SpotlightEffect: React.FC<SpotlightEffectProps> = ({ isActive }) =>
         );
 
         // Much tighter gradient for narrower bright center
-        gradient.addColorStop(0, 'rgba(255, 255, 255, 0.8)'); // Bright center
-        gradient.addColorStop(0.1, 'rgba(255, 255, 255, 0.6)'); // Still bright
-        gradient.addColorStop(0.3, 'rgba(255, 255, 255, 0.3)'); // Dimming
-        gradient.addColorStop(0.6, 'rgba(255, 255, 255, 0.1)'); // Fading
+        gradient.addColorStop(0, 'rgba(255, 255, 255, 1.0)'); // Much brighter center
+        gradient.addColorStop(0.1, 'rgba(255, 255, 255, 0.9)'); // Very bright
+        gradient.addColorStop(0.3, 'rgba(255, 255, 255, 0.6)'); // Still bright
+        gradient.addColorStop(0.6, 'rgba(255, 255, 255, 0.2)'); // Gentle fade
         gradient.addColorStop(1, 'rgba(255, 255, 255, 0)'); // Transparent edge
 
         // Draw the spotlight
