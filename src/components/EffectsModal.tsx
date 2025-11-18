@@ -1,10 +1,10 @@
 import React from 'react';
-import { X, Snowflake, Heart, Flashlight, Circle, Shuffle, Sun, Camera, Sparkles, CloudRain, Zap } from 'lucide-react';
+import { X, Snowflake, Heart, Flashlight, Circle, Shuffle, Sun, Camera, Sparkles, CloudRain, Zap, Wind, Bolt } from 'lucide-react';
 
 interface EffectsModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSelectEffect: (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch') => void;
+  onSelectEffect: (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch' | 'smoke' | 'lightning') => void;
 }
 
 export const EffectsModal: React.FC<EffectsModalProps> = ({ isOpen, onClose, onSelectEffect }) => {
@@ -162,6 +162,32 @@ export const EffectsModal: React.FC<EffectsModalProps> = ({ isOpen, onClose, onS
             <div className="flex items-center justify-center space-x-1">
               <Zap className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300" />
               <span className="text-white font-semibold text-xs">Glitch</span>
+            </div>
+          </button>
+          
+          <button
+            onClick={() => {
+              onSelectEffect('smoke');
+              onClose();
+            }}
+            className="group w-full max-w-[80px] mx-auto bg-gradient-to-r from-gray-600/80 to-slate-600/80 hover:from-gray-500/90 hover:to-slate-500/90 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 transition-all duration-300 transform hover:scale-105"
+          >
+            <div className="flex items-center justify-center space-x-1">
+              <Wind className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300" />
+              <span className="text-white font-semibold text-xs">Smoke</span>
+            </div>
+          </button>
+          
+          <button
+            onClick={() => {
+              onSelectEffect('lightning');
+              onClose();
+            }}
+            className="group w-full max-w-[80px] mx-auto bg-gradient-to-r from-purple-600/80 to-blue-600/80 hover:from-purple-500/90 hover:to-blue-500/90 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 transition-all duration-300 transform hover:scale-105"
+          >
+            <div className="flex items-center justify-center space-x-1">
+              <Bolt className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300" />
+              <span className="text-white font-semibold text-xs">Lightning</span>
             </div>
           </button>
         </div>
