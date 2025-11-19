@@ -138,7 +138,7 @@ export const WaterRippleEffect: React.FC<WaterRippleEffectProps> = ({ isActive }
 
             // Create gradient for water-like appearance
             const gradient = ctx.createRadialGradient(
-              ripple.x, ripple.y, ringRadius - 5,
+              ripple.x, ripple.y, Math.max(0, ringRadius - 5),
               ripple.x, ripple.y, ringRadius + 5
             );
             gradient.addColorStop(0, 'rgba(135, 206, 235, 0)'); // Transparent center
