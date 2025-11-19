@@ -166,13 +166,6 @@ export const BouncingHeartsEffect: React.FC<BouncingHeartsEffectProps> = ({ isAc
         drawHeart(ctx, heart.size);
         ctx.fill();
 
-        // Heart highlight
-        ctx.globalAlpha = heart.opacity * 0.6;
-        ctx.fillStyle = '#FFFFFF';
-        ctx.translate(-heart.size * 0.2, -heart.size * 0.2);
-        drawHeart(ctx, heart.size * 0.4);
-        ctx.fill();
-
         // Sparkle effect occasionally
         if (Math.random() < 0.1) {
           ctx.globalAlpha = heart.opacity * 0.8;
