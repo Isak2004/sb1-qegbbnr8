@@ -11,14 +11,14 @@ export const HeartColorPreview: React.FC<HeartColorPreviewProps> = ({ isOpen, on
   if (!isOpen) return null;
 
   const heartColors = [
-    { name: 'Dark Red', code: '#8B0000' },
-    { name: 'Fire Brick', code: '#B22222' },
-    { name: 'Crimson', code: '#DC143C' },
-    { name: 'Pure Red', code: '#FF0000' },
+    { name: 'Hot Pink', code: '#FF1493' },
+    { name: 'Deep Pink', code: '#FF69B4' },
+    { name: 'Bright Red', code: '#FF0000' },
     { name: 'Orange Red', code: '#FF4500' },
-    { name: 'Bright Orange', code: '#FF6600' },
-    { name: 'Dark Orange', code: '#FF8C00' },
-    { name: 'Indian Red', code: '#CD5C5C' },
+    { name: 'Gold', code: '#FFD700' },
+    { name: 'Lime Green', code: '#32CD32' },
+    { name: 'Electric Blue', code: '#00BFFF' },
+    { name: 'Purple', code: '#8A2BE2' },
   ];
 
   const [selectedColors, setSelectedColors] = React.useState<string[]>(heartColors.map(c => c.code));

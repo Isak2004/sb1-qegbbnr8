@@ -52,14 +52,14 @@ export const BouncingHeartsEffect: React.FC<BouncingHeartsEffectProps> = ({ isAc
 
     // Use provided colors or default colors
     const heartColors = colors || [
-      '#8B0000', // Dark red
-      '#B22222', // Fire brick
-      '#DC143C', // Crimson
-      '#FF0000', // Pure red
+      '#FF1493', // Hot pink
+      '#FF69B4', // Deep pink
+      '#FF0000', // Bright red
       '#FF4500', // Orange red
-      '#FF6600', // Bright orange
-      '#FF8C00', // Dark orange
-      '#CD5C5C', // Indian red
+      '#FFD700', // Gold
+      '#32CD32', // Lime green
+      '#00BFFF', // Electric blue
+      '#8A2BE2', // Purple
     ];
 
     // Create heart particle
