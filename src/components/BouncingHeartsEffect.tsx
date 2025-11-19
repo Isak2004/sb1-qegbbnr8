@@ -51,14 +51,14 @@ export const BouncingHeartsEffect: React.FC<BouncingHeartsEffectProps> = ({ isAc
 
     // Heart colors (romantic pinks and reds)
     const heartColors = [
-      '#FF69B4', // Hot pink
-      '#FF1493', // Deep pink
+      '#8B0000', // Dark red
+      '#B22222', // Fire brick
       '#DC143C', // Crimson
-      '#FF6347', // Tomato
+      '#FF0000', // Pure red
       '#FF4500', // Orange red
-      '#FF0080', // Bright pink
-      '#E91E63', // Pink
-      '#F06292', // Light pink
+      '#FF6600', // Bright orange
+      '#FF8C00', // Dark orange
+      '#CD5C5C', // Indian red
     ];
 
     // Create heart particle
@@ -74,7 +74,7 @@ export const BouncingHeartsEffect: React.FC<BouncingHeartsEffectProps> = ({ isAc
         size: Math.random() * 15 + 10, // Larger hearts
         size: Math.random() * 25 + 15, // Much bigger hearts
         opacity: 0,
-        maxOpacity: Math.random() * 0.6 + 0.6, // Higher opacity
+        maxOpacity: Math.random() * 0.3 + 0.8, // Much higher opacity (0.8-1.1)
         life: 0,
         maxLife: Math.random() * 400 + 300,
         rotation: Math.random() * Math.PI * 2,
@@ -149,7 +149,7 @@ export const BouncingHeartsEffect: React.FC<BouncingHeartsEffectProps> = ({ isAc
           heart.opacity = heart.maxOpacity * (1 - (ageRatio - 0.8) / 0.2);
         } else {
           // Stable visibility with slight pulsing
-          heart.opacity = heart.maxOpacity * (0.8 + 0.2 * Math.sin(timeRef.current * 0.05));
+          heart.opacity = heart.maxOpacity * (0.9 + 0.1 * Math.sin(timeRef.current * 0.05));
         }
 
         // Remove old hearts
