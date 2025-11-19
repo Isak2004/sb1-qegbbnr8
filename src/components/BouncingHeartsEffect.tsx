@@ -72,6 +72,7 @@ export const BouncingHeartsEffect: React.FC<BouncingHeartsEffectProps> = ({ isAc
         vx: (Math.random() - 0.5) * 8, // Faster horizontal movement
         vy: (Math.random() - 0.5) * 8, // Faster vertical movement
         size: Math.random() * 15 + 10, // Larger hearts
+        size: Math.random() * 25 + 15, // Much bigger hearts
         opacity: 0,
         maxOpacity: Math.random() * 0.6 + 0.6, // Higher opacity
         life: 0,
@@ -161,16 +162,6 @@ export const BouncingHeartsEffect: React.FC<BouncingHeartsEffectProps> = ({ isAc
         ctx.rotate(heart.rotation);
         ctx.globalAlpha = heart.opacity;
 
-        // Heart shadow
-        ctx.globalAlpha = heart.opacity * 0.3;
-        ctx.fillStyle = '#000000';
-        ctx.translate(2, 2);
-        drawHeart(ctx, heart.size);
-        ctx.fill();
-        ctx.translate(-2, -2);
-
-        // Main heart
-        ctx.globalAlpha = heart.opacity;
         ctx.fillStyle = heart.color;
         drawHeart(ctx, heart.size);
         ctx.fill();
