@@ -16,6 +16,7 @@ import { LightningStormEffect } from './components/LightningStormEffect';
 import { StarfieldEffect } from './components/StarfieldEffect';
 import { DustParticlesEffect } from './components/DustParticlesEffect';
 import { BouncingHeartsEffect } from './components/BouncingHeartsEffect';
+import { WaterRippleEffect } from './components/WaterRippleEffect';
 import { SnakeGame } from './components/SnakeGame';
 import { HeartColorPreview } from './components/HeartColorPreview';
 
@@ -23,10 +24,10 @@ function App() {
   const [showEffectsModal, setShowEffectsModal] = useState(false);
   const [showHeartColorPreview, setShowHeartColorPreview] = useState(false);
   const [showSnakeGame, setShowSnakeGame] = useState(false);
-  const [activeEffect, setActiveEffect] = useState<'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch' | 'smoke' | 'lightning' | 'starfield' | 'dust' | 'hearts' | null>(null);
+  const [activeEffect, setActiveEffect] = useState<'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch' | 'smoke' | 'lightning' | 'starfield' | 'dust' | 'hearts' | 'ripples' | null>(null);
   const [heartColors, setHeartColors] = useState<string[]>([]);
 
-  const handleEffectSelect = (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch' | 'smoke' | 'lightning' | 'starfield' | 'dust' | 'hearts') => {
+  const handleEffectSelect = (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch' | 'smoke' | 'lightning' | 'starfield' | 'dust' | 'hearts' | 'ripples') => {
     // Turn off current effect if selecting the same one
     if (activeEffect === effect) {
       setActiveEffect(null);
@@ -74,6 +75,7 @@ function App() {
       <StarfieldEffect isActive={activeEffect === 'starfield'} />
       <DustParticlesEffect isActive={activeEffect === 'dust'} />
       <BouncingHeartsEffect isActive={activeEffect === 'hearts'} colors={heartColors} />
+      <WaterRippleEffect isActive={activeEffect === 'ripples'} />
       
       {/* Content Container */}
       <div className="relative z-10 min-h-screen flex flex-col">
