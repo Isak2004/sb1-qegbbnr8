@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Heart } from 'lucide-react';
 
 interface Heart {
   x: number;
@@ -25,6 +26,7 @@ export const BouncingHeartsEffect: React.FC<BouncingHeartsEffectProps> = ({ isAc
   const heartsRef = useRef<Heart[]>([]);
   const animationRef = useRef<number>();
   const timeRef = useRef<number>(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!isActive) {
@@ -34,20 +36,8 @@ export const BouncingHeartsEffect: React.FC<BouncingHeartsEffectProps> = ({ isAc
       return;
     }
 
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    // Set canvas size
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    const container = containerRef.current;
+    if (!container) return;
 
     // Default heart colors
     const heartColors = [
@@ -63,16 +53,15 @@ export const BouncingHeartsEffect: React.FC<BouncingHeartsEffectProps> = ({ isAc
     ];
 
     // Create heart particle
-    const createHeart = (x?: number, y?: number) => {
-      const startX = x !== undefined ? x : Math.random() * canvas.width;
-      const startY = y !== undefined ? y : Math.random() * canvas.height;
+    const createHeart = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
       
       heartsRef.current.push({
-        x: startX,
-        y: startY,
+        x: Math.random() * width,
+        y: height + 50,
         vx: (Math.random() - 0.5) * 8, // Faster horizontal movement
         vy: (Math.random() - 0.5) * 8, // Faster vertical movement
-        size: Math.random() * 15 + 10, // Larger hearts
         size: Math.random() * 25 + 15, // Much bigger hearts
         opacity: 0,
         maxOpacity: Math.random() * 0.3 + 0.8, // Much higher opacity (0.8-1.1)
@@ -85,31 +74,19 @@ export const BouncingHeartsEffect: React.FC<BouncingHeartsEffectProps> = ({ isAc
       });
     };
 
-    // Initialize with lots of hearts
-    for (let i = 0; i < 50; i++) {
-      createHeart();
-    }
-
-    // Draw heart shape
-    const drawHeart = (ctx: CanvasRenderingContext2D, size: number) => {
-      const scale = size / 20;
-      ctx.beginPath();
-      ctx.moveTo(0, 4 * scale);
-      // Left curve - rounder and cuter
-      ctx.bezierCurveTo(-6 * scale, -3 * scale, -12 * scale, 2 * scale, 0, 14 * scale);
-      // Right curve - rounder and cuter
-      ctx.bezierCurveTo(12 * scale, 2 * scale, 6 * scale, -3 * scale, 0, 4 * scale);
-      ctx.closePath();
-    };
+    let lastHeartTime = 0;
+    const HEART_INTERVAL = 200; // Create hearts more frequently
 
     // Animation loop
     const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
       timeRef.current += 1;
 
-      // Occasionally create new hearts (less frequent after initial burst)
-      if (Math.random() < 0.02 && heartsRef.current.length < 30) {
-        createHeart();
+      // Create new hearts at intervals
+      if (timeRef.current - lastHeartTime > HEART_INTERVAL) {
+        if (heartsRef.current.length < 30) {
+          createHeart();
+        }
+        lastHeartTime = timeRef.current;
       }
 
       // Update and draw hearts
@@ -121,15 +98,15 @@ export const BouncingHeartsEffect: React.FC<BouncingHeartsEffectProps> = ({ isAc
         heart.rotation += heart.rotationSpeed;
 
         // Bounce off walls
-        if (heart.x <= heart.size || heart.x >= canvas.width - heart.size) {
+        if (heart.x <= heart.size || heart.x >= window.innerWidth - heart.size) {
           heart.vx = -heart.vx * 0.8; // Slight energy loss on bounce
-          heart.x = Math.max(heart.size, Math.min(canvas.width - heart.size, heart.x));
+          heart.x = Math.max(heart.size, Math.min(window.innerWidth - heart.size, heart.x));
           heart.bounceCount++;
         }
         
-        if (heart.y <= heart.size || heart.y >= canvas.height - heart.size) {
+        if (heart.y <= heart.size || heart.y >= window.innerHeight - heart.size) {
           heart.vy = -heart.vy * 0.8; // Slight energy loss on bounce
-          heart.y = Math.max(heart.size, Math.min(canvas.height - heart.size, heart.y));
+          heart.y = Math.max(heart.size, Math.min(window.innerHeight - heart.size, heart.y));
           heart.bounceCount++;
         }
 
@@ -158,52 +135,6 @@ export const BouncingHeartsEffect: React.FC<BouncingHeartsEffectProps> = ({ isAc
           heartsRef.current.splice(index, 1);
           return;
         }
-
-        // Draw heart
-        ctx.save();
-        ctx.translate(heart.x, heart.y);
-        ctx.rotate(heart.rotation);
-        ctx.globalAlpha = heart.opacity;
-
-        // Draw shadow for 3D effect
-        ctx.save();
-        ctx.translate(2, 2);
-        ctx.globalAlpha = heart.opacity * 0.3;
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
-        drawHeart(ctx, heart.size);
-        ctx.fill();
-        ctx.restore();
-
-        // Draw main heart
-        ctx.fillStyle = heart.color;
-        drawHeart(ctx, heart.size);
-        ctx.fill();
-
-        // Draw outline for 3D effect
-        ctx.globalAlpha = heart.opacity * 0.8;
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
-        ctx.lineWidth = 1.5;
-        drawHeart(ctx, heart.size);
-        ctx.stroke();
-
-        // Add highlight for 3D effect
-        ctx.globalAlpha = heart.opacity * 0.7;
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-        drawHeart(ctx, heart.size * 0.6);
-        ctx.fill();
-
-        // Sparkle effect occasionally
-        if (Math.random() < 0.1) {
-          ctx.globalAlpha = heart.opacity * 0.8;
-          ctx.fillStyle = '#FFFFFF';
-          const sparkleX = (Math.random() - 0.5) * heart.size;
-          const sparkleY = (Math.random() - 0.5) * heart.size;
-          ctx.beginPath();
-          ctx.arc(sparkleX, sparkleY, 1, 0, Math.PI * 2);
-          ctx.fill();
-        }
-
-        ctx.restore();
       });
 
       animationRef.current = requestAnimationFrame(animate);
@@ -212,7 +143,6 @@ export const BouncingHeartsEffect: React.FC<BouncingHeartsEffectProps> = ({ isAc
     animate();
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
@@ -222,9 +152,25 @@ export const BouncingHeartsEffect: React.FC<BouncingHeartsEffectProps> = ({ isAc
   if (!isActive) return null;
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-30"
-    />
+    <div ref={containerRef} className="fixed inset-0 pointer-events-none z-30 overflow-hidden">
+      {heartsRef.current.map((heart, index) => (
+        <div
+          key={index}
+          className="absolute transition-transform duration-75"
+          style={{
+            left: `${heart.x}px`,
+            top: `${heart.y}px`,
+            transform: `rotate(${heart.rotation}rad)`,
+            opacity: heart.opacity,
+          }}
+        >
+          <Heart
+            size={heart.size}
+            style={{ color: heart.color }}
+            fill="currentColor"
+          />
+        </div>
+      ))}
+    </div>
   );
 };
