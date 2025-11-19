@@ -15,14 +15,15 @@ import { SmokeWispsEffect } from './components/SmokeWispsEffect';
 import { LightningStormEffect } from './components/LightningStormEffect';
 import { StarfieldEffect } from './components/StarfieldEffect';
 import { DustParticlesEffect } from './components/DustParticlesEffect';
+import { BouncingHeartsEffect } from './components/BouncingHeartsEffect';
 import { SnakeGame } from './components/SnakeGame';
 
 function App() {
   const [showEffectsModal, setShowEffectsModal] = useState(false);
   const [showSnakeGame, setShowSnakeGame] = useState(false);
-  const [activeEffect, setActiveEffect] = useState<'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch' | 'smoke' | 'lightning' | 'starfield' | 'dust' | null>(null);
+  const [activeEffect, setActiveEffect] = useState<'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch' | 'smoke' | 'lightning' | 'starfield' | 'dust' | 'hearts' | null>(null);
 
-  const handleEffectSelect = (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch' | 'smoke' | 'lightning' | 'starfield' | 'dust') => {
+  const handleEffectSelect = (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch' | 'smoke' | 'lightning' | 'starfield' | 'dust' | 'hearts') => {
     // Turn off current effect if selecting the same one
     if (activeEffect === effect) {
       setActiveEffect(null);
@@ -59,6 +60,7 @@ function App() {
       <LightningStormEffect isActive={activeEffect === 'lightning'} />
       <StarfieldEffect isActive={activeEffect === 'starfield'} />
       <DustParticlesEffect isActive={activeEffect === 'dust'} />
+      <BouncingHeartsEffect isActive={activeEffect === 'hearts'} />
       
       {/* Content Container */}
       <div className="relative z-10 min-h-screen flex flex-col">
