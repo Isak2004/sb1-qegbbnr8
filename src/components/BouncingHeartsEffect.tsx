@@ -18,9 +18,10 @@ interface Heart {
 
 interface BouncingHeartsEffectProps {
   isActive: boolean;
+  colors?: string[];
 }
 
-export const BouncingHeartsEffect: React.FC<BouncingHeartsEffectProps> = ({ isActive }) => {
+export const BouncingHeartsEffect: React.FC<BouncingHeartsEffectProps> = ({ isActive, colors }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const heartsRef = useRef<Heart[]>([]);
   const animationRef = useRef<number>();
@@ -49,8 +50,8 @@ export const BouncingHeartsEffect: React.FC<BouncingHeartsEffectProps> = ({ isAc
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Heart colors (romantic pinks and reds)
-    const heartColors = [
+    // Use provided colors or default colors
+    const heartColors = colors || [
       '#8B0000', // Dark red
       '#B22222', // Fire brick
       '#DC143C', // Crimson

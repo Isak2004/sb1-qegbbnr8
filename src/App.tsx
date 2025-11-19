@@ -17,19 +17,32 @@ import { StarfieldEffect } from './components/StarfieldEffect';
 import { DustParticlesEffect } from './components/DustParticlesEffect';
 import { BouncingHeartsEffect } from './components/BouncingHeartsEffect';
 import { SnakeGame } from './components/SnakeGame';
+import { HeartColorPreview } from './components/HeartColorPreview';
 
 function App() {
   const [showEffectsModal, setShowEffectsModal] = useState(false);
+  const [showHeartColorPreview, setShowHeartColorPreview] = useState(false);
   const [showSnakeGame, setShowSnakeGame] = useState(false);
   const [activeEffect, setActiveEffect] = useState<'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch' | 'smoke' | 'lightning' | 'starfield' | 'dust' | 'hearts' | null>(null);
+  const [heartColors, setHeartColors] = useState<string[]>([]);
 
   const handleEffectSelect = (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch' | 'smoke' | 'lightning' | 'starfield' | 'dust' | 'hearts') => {
     // Turn off current effect if selecting the same one
     if (activeEffect === effect) {
       setActiveEffect(null);
     } else {
+      // If selecting hearts effect, show color preview first
+      if (effect === 'hearts') {
+        setShowHeartColorPreview(true);
+        return;
+      }
       setActiveEffect(effect);
     }
+  };
+
+  const handleHeartColorsSelect = (colors: string[]) => {
+    setHeartColors(colors);
+    setActiveEffect('hearts');
   };
 
   return (
@@ -60,7 +73,7 @@ function App() {
       <LightningStormEffect isActive={activeEffect === 'lightning'} />
       <StarfieldEffect isActive={activeEffect === 'starfield'} />
       <DustParticlesEffect isActive={activeEffect === 'dust'} />
-      <BouncingHeartsEffect isActive={activeEffect === 'hearts'} />
+      <BouncingHeartsEffect isActive={activeEffect === 'hearts'} colors={heartColors} />
       
       {/* Content Container */}
       <div className="relative z-10 min-h-screen flex flex-col">
@@ -158,6 +171,13 @@ function App() {
       <SnakeGame
         isOpen={showSnakeGame}
         onClose={() => setShowSnakeGame(false)}
+      />
+      
+      {/* Heart Color Preview */}
+      <HeartColorPreview
+        isOpen={showHeartColorPreview}
+        onClose={() => setShowHeartColorPreview(false)}
+        onSelectColors={handleHeartColorsSelect}
       />
     </div>
   );
