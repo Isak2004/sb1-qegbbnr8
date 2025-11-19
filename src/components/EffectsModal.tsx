@@ -1,10 +1,10 @@
 import React from 'react';
-import { X, Snowflake, Heart, Flashlight, Circle, Shuffle, Sun, Camera, Sparkles, CloudRain, Zap, Wind, Bolt, Star, Waves, Droplets } from 'lucide-react';
+import { X, Snowflake, Heart, Flashlight, Circle, Shuffle, Sun, Camera, Sparkles, CloudRain, Zap, Wind, Bolt, Star, Waves, Droplets, Ripple } from 'lucide-react';
 
 interface EffectsModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSelectEffect: (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch' | 'smoke' | 'lightning' | 'starfield' | 'dust' | 'hearts' | 'ripples') => void;
+  onSelectEffect: (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch' | 'smoke' | 'lightning' | 'starfield' | 'dust' | 'hearts' | 'ripples' | 'realistic-ripples') => void;
 }
 
 export const EffectsModal: React.FC<EffectsModalProps> = ({ isOpen, onClose, onSelectEffect }) => {
@@ -240,6 +240,19 @@ export const EffectsModal: React.FC<EffectsModalProps> = ({ isOpen, onClose, onS
             <div className="flex items-center justify-center space-x-1">
               <Heart className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300" />
               <span className="text-white font-semibold text-xs">Hearts</span>
+            </div>
+          </button>
+          
+          <button
+            onClick={() => {
+              onSelectEffect('realistic-ripples');
+              onClose();
+            }}
+            className="group w-full max-w-[80px] mx-auto bg-gradient-to-r from-teal-600/80 to-blue-600/80 hover:from-teal-500/90 hover:to-blue-500/90 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 transition-all duration-300 transform hover:scale-105"
+          >
+            <div className="flex items-center justify-center space-x-1">
+              <Ripple className="w-4 h-4 text-white group-hover:rotate-12 transition-transform duration-300" />
+              <span className="text-white font-semibold text-xs">Realistic</span>
             </div>
           </button>
         </div>
