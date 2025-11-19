@@ -11,6 +11,7 @@ export const HeartColorPreview: React.FC<HeartColorPreviewProps> = ({ isOpen, on
   if (!isOpen) return null;
 
   const heartColors = [
+    { name: 'Deep Red', code: '#8B0000' },
     { name: 'Hot Pink', code: '#FF1493' },
     { name: 'Deep Pink', code: '#FF69B4' },
     { name: 'Bright Red', code: '#FF0000' },

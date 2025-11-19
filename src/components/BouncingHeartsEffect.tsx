@@ -52,6 +52,7 @@ export const BouncingHeartsEffect: React.FC<BouncingHeartsEffectProps> = ({ isAc
 
     // Use provided colors or default colors
     const heartColors = colors || [
+      '#8B0000', // Deep red
       '#FF1493', // Hot pink
       '#FF69B4', // Deep pink
       '#FF0000', // Bright red
