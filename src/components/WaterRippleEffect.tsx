@@ -148,7 +148,7 @@ export const WaterRippleEffect: React.FC<WaterRippleEffectProps> = ({ isActive }
             ctx.strokeStyle = gradient;
             ctx.lineWidth = 3 - ring;
             ctx.beginPath();
-            ctx.arc(ripple.x, ripple.y, ringRadius, 0, Math.PI * 2);
+            ctx.arc(ripple.x, ripple.y, Math.max(0, ringRadius), 0, Math.PI * 2);
             ctx.stroke();
 
             // Add inner highlight for 3D effect
@@ -156,7 +156,7 @@ export const WaterRippleEffect: React.FC<WaterRippleEffectProps> = ({ isActive }
             ctx.strokeStyle = `rgba(255, 255, 255, ${ringOpacity * 0.8})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
-            ctx.arc(ripple.x, ripple.y, ringRadius - 1, 0, Math.PI * 2);
+            ctx.arc(ripple.x, ripple.y, Math.max(0, ringRadius - 1), 0, Math.PI * 2);
             ctx.stroke();
           }
         }
