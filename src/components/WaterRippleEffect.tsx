@@ -64,7 +64,7 @@ export const WaterRippleEffect: React.FC<WaterRippleEffectProps> = ({ isActive }
         speed: Math.random() * 2 + 1,
         life: 0,
         maxLife: maxRadius / 2,
-        frequency: Math.random() * 0.2 + 0.1,
+        frequency: Math.random() * 0.02 + 0.01,
         amplitude: Math.random() * 3 + 2,
       });
     };
@@ -97,7 +97,7 @@ export const WaterRippleEffect: React.FC<WaterRippleEffectProps> = ({ isActive }
       timeRef.current += 1;
 
       // Occasionally create random ripples
-      if (Math.random() < 0.002) {
+      if (Math.random() < 0.008) {
         createRipple();
       }
 
