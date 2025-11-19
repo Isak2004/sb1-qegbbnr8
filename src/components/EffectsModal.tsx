@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Snowflake, Heart, Flashlight, Circle, Shuffle, Sun, Camera, Sparkles, CloudRain, Zap, Wind, Bolt, Star, Waves, Droplets, Ripple } from 'lucide-react';
+import { X, Snowflake, Heart, Flashlight, Circle, Shuffle, Sun, Camera, Sparkles, CloudRain, Zap, Wind, Bolt, Star, Waves, Droplets, Apple as Ripple } from 'lucide-react';
 
 interface EffectsModalProps {
   isOpen: boolean;
