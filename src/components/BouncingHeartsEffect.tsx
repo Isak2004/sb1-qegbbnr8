@@ -72,8 +72,7 @@ export const BouncingHeartsEffect: React.FC<BouncingHeartsEffectProps> = ({ isAc
         y: startY,
         vx: (Math.random() - 0.5) * 8, // Faster horizontal movement
         vy: (Math.random() - 0.5) * 8, // Faster vertical movement
-        size: Math.random() * 15 + 10, // Larger hearts
-        size: Math.random() * 25 + 15, // Much bigger hearts
+        size: Math.random() * 50 + 30, // Double the size (was 25 + 15, now 50 + 30)
         opacity: 0,
         maxOpacity: Math.random() * 0.3 + 0.8, // Much higher opacity (0.8-1.1)
         life: 0,
@@ -93,12 +92,14 @@ export const BouncingHeartsEffect: React.FC<BouncingHeartsEffectProps> = ({ isAc
     // Draw heart shape
     const drawHeart = (ctx: CanvasRenderingContext2D, size: number) => {
       const scale = size / 20;
+      const widthScale = scale * 1.4; // Make hearts 40% wider (bulkier)
+      const heightScale = scale * 0.9; // Make hearts 10% shorter relative to width
       ctx.beginPath();
-      ctx.moveTo(0, 4 * scale);
+      ctx.moveTo(0, 4 * heightScale);
       // Left curve - rounder and cuter
-      ctx.bezierCurveTo(-6 * scale, -3 * scale, -12 * scale, 2 * scale, 0, 14 * scale);
+      ctx.bezierCurveTo(-6 * widthScale, -3 * heightScale, -12 * widthScale, 2 * heightScale, 0, 14 * heightScale);
       // Right curve - rounder and cuter
-      ctx.bezierCurveTo(12 * scale, 2 * scale, 6 * scale, -3 * scale, 0, 4 * scale);
+      ctx.bezierCurveTo(12 * widthScale, 2 * heightScale, 6 * widthScale, -3 * heightScale, 0, 4 * heightScale);
       ctx.closePath();
     };
 
