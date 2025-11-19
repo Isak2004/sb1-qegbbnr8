@@ -19,33 +19,21 @@ import { BouncingHeartsEffect } from './components/BouncingHeartsEffect';
 import { WaterRippleEffect } from './components/WaterRippleEffect';
 import { RealisticWaterRippleEffect } from './components/RealisticWaterRippleEffect';
 import { SnakeGame } from './components/SnakeGame';
-import { HeartColorPreview } from './components/HeartColorPreview';
 
 function App() {
   const [showEffectsModal, setShowEffectsModal] = useState(false);
-  const [showHeartColorPreview, setShowHeartColorPreview] = useState(false);
   const [showSnakeGame, setShowSnakeGame] = useState(false);
   const [activeEffect, setActiveEffect] = useState<'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch' | 'smoke' | 'lightning' | 'starfield' | 'dust' | 'hearts' | 'ripples' | 'realistic-ripples' | null>(null);
-  const [heartColors, setHeartColors] = useState<string[]>([]);
 
   const handleEffectSelect = (effect: 'snowflakes' | 'balloons' | 'spotlight' | 'bubbles' | 'scramble' | 'sunflare' | 'lensflare' | 'fireflies' | 'rain' | 'glitch' | 'smoke' | 'lightning' | 'starfield' | 'dust' | 'hearts' | 'ripples' | 'realistic-ripples') => {
     // Turn off current effect if selecting the same one
     if (activeEffect === effect) {
       setActiveEffect(null);
     } else {
-      // If selecting hearts effect, show color preview first
-      if (effect === 'hearts') {
-        setShowHeartColorPreview(true);
-        return;
-      }
       setActiveEffect(effect);
     }
   };
 
-  const handleHeartColorsSelect = (colors: string[]) => {
-    setHeartColors(colors);
-    setActiveEffect('hearts');
-  };
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -75,7 +63,7 @@ function App() {
       <LightningStormEffect isActive={activeEffect === 'lightning'} />
       <StarfieldEffect isActive={activeEffect === 'starfield'} />
       <DustParticlesEffect isActive={activeEffect === 'dust'} />
-      <BouncingHeartsEffect isActive={activeEffect === 'hearts'} colors={heartColors} />
+      <BouncingHeartsEffect isActive={activeEffect === 'hearts'} />
       <WaterRippleEffect isActive={activeEffect === 'ripples'} />
       <RealisticWaterRippleEffect isActive={activeEffect === 'realistic-ripples'} />
       
@@ -175,13 +163,6 @@ function App() {
       <SnakeGame
         isOpen={showSnakeGame}
         onClose={() => setShowSnakeGame(false)}
-      />
-      
-      {/* Heart Color Preview */}
-      <HeartColorPreview
-        isOpen={showHeartColorPreview}
-        onClose={() => setShowHeartColorPreview(false)}
-        onSelectColors={handleHeartColorsSelect}
       />
     </div>
   );
