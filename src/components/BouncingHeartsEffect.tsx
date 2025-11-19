@@ -93,9 +93,11 @@ export const BouncingHeartsEffect: React.FC<BouncingHeartsEffectProps> = ({ isAc
     const drawHeart = (ctx: CanvasRenderingContext2D, size: number) => {
       const scale = size / 20;
       ctx.beginPath();
-      ctx.moveTo(0, 3 * scale);
-      ctx.bezierCurveTo(-8 * scale, -5 * scale, -15 * scale, 0, 0, 15 * scale);
-      ctx.bezierCurveTo(15 * scale, 0, 8 * scale, -5 * scale, 0, 3 * scale);
+      ctx.moveTo(0, 4 * scale);
+      // Left curve - rounder and cuter
+      ctx.bezierCurveTo(-6 * scale, -3 * scale, -12 * scale, 2 * scale, 0, 14 * scale);
+      // Right curve - rounder and cuter
+      ctx.bezierCurveTo(12 * scale, 2 * scale, 6 * scale, -3 * scale, 0, 4 * scale);
       ctx.closePath();
     };
 
@@ -162,8 +164,31 @@ export const BouncingHeartsEffect: React.FC<BouncingHeartsEffectProps> = ({ isAc
         ctx.rotate(heart.rotation);
         ctx.globalAlpha = heart.opacity;
 
+        // Draw shadow for 3D effect
+        ctx.save();
+        ctx.translate(2, 2);
+        ctx.globalAlpha = heart.opacity * 0.3;
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
+        drawHeart(ctx, heart.size);
+        ctx.fill();
+        ctx.restore();
+
+        // Draw main heart
         ctx.fillStyle = heart.color;
         drawHeart(ctx, heart.size);
+        ctx.fill();
+
+        // Draw outline for 3D effect
+        ctx.globalAlpha = heart.opacity * 0.8;
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
+        ctx.lineWidth = 1.5;
+        drawHeart(ctx, heart.size);
+        ctx.stroke();
+
+        // Add highlight for 3D effect
+        ctx.globalAlpha = heart.opacity * 0.7;
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+        drawHeart(ctx, heart.size * 0.6);
         ctx.fill();
 
         // Sparkle effect occasionally
